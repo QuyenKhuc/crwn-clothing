@@ -13,6 +13,13 @@ const config = {
   measurementId: "G-Y534NLKLDD",
 };
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+  const userRef = firebase.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+  console.log(snapShot);
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
